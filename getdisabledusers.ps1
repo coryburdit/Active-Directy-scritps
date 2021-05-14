@@ -34,7 +34,7 @@ Import-Module ActiveDirectory
 $InactiveUsers = Get-ADUser -Filter {Enabled -eq $false} -Properties * | Sort-Object
 foreach ($InactiveUser in $InactiveUsers) {
           Write-Host "Making the file now"
-        Add-Content -Path $Path -Value ($InactiveUser.Name + "," + $InactiveUser.LastLogonDate)
+        Add-Content -Path $Path -Value ($InactiveUser.Name + "," + $InactiveUser.EmailAddress + "," + $InactiveUser.LastLogonDate)
   }
 
 #Completion notice and exit prompt.
